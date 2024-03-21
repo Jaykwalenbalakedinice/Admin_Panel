@@ -12,9 +12,7 @@
 <script src={{asset("adminLTE-3.2.0/plugins/chart.js/Chart.min.js")}}></script>
 <!-- Sparkline -->
 <script src={{asset("adminLTE-3.2.0/plugins/sparklines/sparkline.js")}}></script>
-<!-- JQVMap -->
-<script src={{asset("adminLTE-3.2.0/plugins/jqvmap/jquery.vmap.min.js")}}></script>
-<script src={{asset("adminLTE-3.2.0/plugins/jqvmap/maps/jquery.vmap.usa.js")}}></script>
+
 <!-- jQuery Knob Chart -->
 <script src={{asset("adminLTE-3.2.0/plugins/jquery-knob/jquery.knob.min.js")}}></script>
 <!-- daterangepicker -->
@@ -31,4 +29,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src={{asset("adminLTE-3.2.0/dist/js/demo.js")}}></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src={{asset("adminLTE-3.2.0/dist/js/pages/dashboard.js")}}></script>
+
+
+<script src={{ asset('AdminLTE-3.2.0/build/js/fontawesome.js')}}></script>

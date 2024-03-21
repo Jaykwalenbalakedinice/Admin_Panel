@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.app');
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/', 'dashboard')->name('admin.dashboard');
+    Route::get('/generalReport', 'generalReport')->name('admin.generalReport');
 });
