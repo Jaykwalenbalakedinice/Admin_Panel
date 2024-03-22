@@ -43,9 +43,9 @@
 
 @section('content')
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid" style="width: 1800px; height: 500px;">
             <div class="row d-flex">
-                <div class="card card-danger card-outline col-12 col-lg-7 h-50">
+                <div class="card card-danger col-12 col-lg-7 h-50 P-0">
                     <div class="card-header">
                         <h3 class="card-title">Purposes</h3>
                     </div>
@@ -63,47 +63,74 @@
 @endsection
 
 @section('additionalScript')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
-        var ctx = document.getElementById('purposeChart').getContext('2d');
+        window.onload = function() {
+            var ctx = document.getElementById('purposeChart').getContext('2d');
 
-        var data = {
-            labels: ['CAV', 'Receiving of Documents', 'Submission of Document', 'Appointment', 'Inquiry', 'Interview', 'Training', 'Meeting', 'Bidding', 'Payment', 'Pick-up cheque'],
-            datasets: [{
-                label: 'clientPurpose',
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                borderColor: 'rgba(255, 162, 235, 1)',
-                borderWidth: 1,
-                data: [
-                    {{$clientPurpose->CAV_count}},
-                    {{$clientPurpose->ROD_count}},
-                    {{$clientPurpose->SOD_count}},
-                    {{$clientPurpose->Appointment_count}},
-                    {{$clientPurpose->Inquiry_count}},
-                    {{$clientPurpose->Interview_count}},
-                    {{$clientPurpose->Training_count}},
-                    {{$clientPurpose->Meeting_count}},
-                    {{$clientPurpose->Bidding_count}},
-                    {{$clientPurpose->Payment_count}},
-                    {{$clientPurpose->PC_count}},
+            var data = {
+                labels: ['CAV', 'ROD', 'SOD', 'Appointment', 'Inquiry',
+                    'Interview', 'Training', 'Meeting', 'Bidding', 'Payment', 'Pick-up cheque'
                 ],
-            }]
-        };
+                datasets: [{
+                    data: [
+                        {{ $clientPurpose->CAV_count }},
+                        {{ $clientPurpose->ROD_count }},
+                        {{ $clientPurpose->SOD_count }},
+                        {{ $clientPurpose->Appointment_count }},
+                        {{ $clientPurpose->Inquiry_count }},
+                        {{ $clientPurpose->Interview_count }},
+                        {{ $clientPurpose->Training_count }},
+                        {{ $clientPurpose->Meeting_count }},
+                        {{ $clientPurpose->Bidding_count }},
+                        {{ $clientPurpose->Payment_count }},
+                        {{ $clientPurpose->PC_count }},
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.80)',
+                        'rgba(255, 159, 64, 0.80)',
+                        'rgba(255, 205, 86, 0.80)',
+                        'rgba(75, 192, 192, 0.80)',
+                        'rgba(54, 162, 235, 0.80)',
+                        'rgba(153, 102, 255, 0.80)',
+                        'rgba(201, 203, 207, 0.80)',
+                        'rgba(42, 132, 132, 0.80)',
+                        'rgba(255, 159, 64, 0.80)',
+                        'rgba(255, 205, 86, 0.80)',
+                        'rgba(75, 192, 192, 0.80)'
+                    ],
 
-        // Configure options
-        var options = {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
                 }]
-            }
-        };
+            };
 
-        // Create the chart
-        var purposeChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: options
-        });
+            // Configure options
+            var options = {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 0,
+                            minRotation: 0,
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            };
+
+            // Create the chart
+            var purposeChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        }
     </script>
