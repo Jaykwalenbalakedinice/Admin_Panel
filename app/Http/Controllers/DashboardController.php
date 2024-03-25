@@ -41,7 +41,12 @@ class DashboardController extends Controller
             ->whereYear('created_at', date('Y'))
             ->count();
 
-        return view('admin.dashboard', compact('clientPurpose', 'clientCount', 'dailyCount', 'monthlyCount', 'annualCount'));
+        $regions = DB::table('tbl_clientLogs')
+            ->select('region', DB::raw('count(*) as total'))
+            ->groupBy('region')
+            ->get();
+
+        return view('admin.dashboard', compact('clientPurpose', 'clientCount', 'dailyCount', 'monthlyCount', 'annualCount', 'regions'));
     }
 
     public function generalReport()

@@ -1,5 +1,20 @@
 @extends('layout.app')
 
+@section('additionalStyle')
+<Style>
+    .small-box-footer-dropdown {
+        background-color: rgba(0, 0, 0, .1);
+        color: rgba(255, 255, 255, .8);
+        display: block;
+        padding: 3px 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        z-index: 10;
+    }
+</Style>
+@endsection
+
 @section('headerTitle')
     <h1 class="m-0">General Report</h1>
 @endsection
@@ -49,4 +64,27 @@
 
 @section('content2')
 
+@endsection
+
+@section('additionalScript')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        var counts = {
+            total: ('Total: {{ $clientCount }}'),
+            daily: ('Daily: {{ $dailyCount }}'),
+            monthly: ('Monthly: {{ $monthlyCount }}'),
+            annual: ('Annual: {{ $annualCount }}')
+        };
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-item').click(function() {
+                var countType = $(this).text().toLowerCase();
+                var count = counts[countType];
+                $('#clientCount').text(count);
+            });
+        });
+    </script>
 @endsection

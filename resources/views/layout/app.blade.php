@@ -28,6 +28,7 @@
     <link rel="stylesheet" href={{ asset('AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.css') }}>
     <!-- summernote -->
     <link rel="stylesheet" href={{ asset('AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.css') }}>
+
     @yield('additionalStyle')
 </head>
 
@@ -72,38 +73,21 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>{{ $clientCount }}</h3>
+                                    <h3 id="clientCount">Total: {{ $clientCount }}</h3>
 
                                     <p>Number of Clients</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" data-toggle="modal" data-target="#infoModal" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-
-                                <!-- Number of Clients Modal -->
-                                <div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="infoModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="infoModalLabel">Client Count</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Daily: {{ $dailyCount }}</p>
-                                                <p>Monthly: {{ $monthlyCount }}</p>
-                                                <p>Annual: {{ $annualCount }}</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
+                                <div class="dropdown">
+                                    <a href="#" class="small-box-footer-dropdown dropdown-toggle"
+                                        data-toggle="dropdown">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    <div class="dropdown-menu" style="cursor: pointer;">
+                                        <a class="dropdown-item" data-count="{{ $clientCount }}">Total</a>
+                                        <a class="dropdown-item" data-count="{{ $dailyCount }}">Daily</a>
+                                        <a class="dropdown-item" data-count="{{ $monthlyCount }}">Monthly</a>
+                                        <a class="dropdown-item" data-count="{{ $annualCount }}">Annual</a>
                                     </div>
                                 </div>
                             </div>
