@@ -1542,15 +1542,15 @@
               "hasc": "PH.DS",
               "alt-name": null,
               "woe-id": "2346680",
-              "subregion": "Davao del Sur",
+              "subregion": "Davao del Sur | Davao Occidental",
               "fips": "RP25",
               "postal-code": "DS",
-              "name": "Davao del Sur",
+              "name": "Davao del Sur | Davao Occidental",
               "country": "Philippines",
               "type-en": "Province",
               "region": "Davao (Region XI)",
               "longitude": "125.511",
-              "woe-name": "Davao del Sur",
+              "woe-name": "Davao del Sur | Davao Occidental",
               "latitude": "6.34808",
               "woe-label": null,
               "type": "Lalawigan|Probinsya",
@@ -1568,8 +1568,7 @@
               ],
               [
                 [
-                  203,
-                  -63
+                  203
                 ]
               ]
             ],
